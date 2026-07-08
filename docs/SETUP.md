@@ -56,12 +56,18 @@ personal one — clean books make the P&L in DropshipOS match reality.
 
 ## 5. AutoDS
 
-1. autods.com → start with the **Import 200** plan.
+1. autods.com → start with the **Import 200** plan. Note: price & stock
+   monitoring is **not included** on this plan — treat AutoDS as import +
+   order automation only, and let CJDropshipping + DropshipOS handle price
+   and inventory monitoring (that's the `price-sync` and `inventory-sync`
+   automations). If you'd rather have AutoDS do the monitoring too, upgrade
+   to a plan that lists it before relying on it.
 2. Add store → Shopify → authorize.
 3. Settings → Auto Ordering: ON. Load $100 into the AutoDS balance — this is
    what places supplier orders with zero clicks from you.
-4. Settings → Price & Stock Monitoring: ON, price-change auto-adjust ON,
-   out-of-stock action = "set quantity 0" (hides the product).
+4. If (and only if) your plan includes Price & Stock Monitoring: turn it ON,
+   price-change auto-adjust ON, out-of-stock action = "set quantity 0"
+   (hides the product). Otherwise skip — DropshipOS covers this via CJ.
 
 ## 6. TikTok (organic + ads)
 
@@ -70,7 +76,10 @@ personal one — clean books make the P&L in DropshipOS match reality.
    set timezone to your target market's (cannot be changed later).
 3. Shopify App Store → install **TikTok** app → connect → this installs the
    TikTok Pixel automatically. Verify: TikTok Events Manager shows a
-   `Complete Payment` test event after a test checkout.
+   **`Purchase`** test event after a test checkout, with value/currency
+   parameters attached — that's the event sales campaigns optimize on. (The
+   UI sometimes shows friendlier wording; in code/API land the standard
+   purchase event is `Purchase`.)
 4. In Ads Manager → Tools → API access: generate a token for DropshipOS
    (`TIKTOK_ACCESS_TOKEN`, `TIKTOK_ADVERTISER_ID` in `server/.env`).
 
@@ -97,8 +106,12 @@ personal one — clean books make the P&L in DropshipOS match reality.
 ## 9. Reviews + support
 
 1. Shopify App Store → **Judge.me** (free plan): review request email at
-   7 days post-delivery, photo-review discount ON. Import supplier reviews
-   for your product before launch.
+   7 days post-delivery. **Review compliance (FTC rule in effect since
+   Oct 21, 2024, with civil penalties):** only import reviews that are real
+   reviews of the *exact same product*, and represent honestly where they
+   came from — no borrowed reviews from lookalike listings, ever. If you
+   offer a discount for photo reviews, the incentive must not be conditioned
+   on the review being positive, and incentivized reviews must be disclosed.
 2. Shopify App Store → **Tidio**: enable the AI responder for order status,
    shipping times, and returns. Connect your support email. Everything it
    can't answer lands in the queue DropshipOS shows.
