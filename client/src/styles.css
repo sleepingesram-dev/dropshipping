@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* Dark-first command center. Palette validated with the dataviz six-checks
+   validator against the chart surface (#16181d). */
+@theme {
+  --color-page: #0e0f12;
+  --color-surface: #16181d;
+  --color-raised: #1c1f26;
+  --color-edge: rgba(255, 255, 255, 0.08);
+  --color-ink: #f4f4f2;
+  --color-ink2: #c3c2b7;
+  --color-muted: #898781;
+  --color-grid: #2a2c31;
+
+  /* categorical series (fixed order, never cycled) */
+  --color-s1: #3987e5;
+  --color-s2: #199e70;
+  --color-s3: #c98500;
+  --color-s4: #9085e9;
+  --color-s5: #e66767;
+
+  /* status — reserved, never used as series colors */
+  --color-good: #0ca30c;
+  --color-warning: #fab219;
+  --color-serious: #ec835a;
+  --color-critical: #d03b3b;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+  background: var(--color-page);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* number columns that must align */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2c2f36;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}

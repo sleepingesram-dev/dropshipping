@@ -1,0 +1,22 @@
+# Render blueprint: one web service serving the API + built client.
+# Attach the Postgres block for durable storage, or delete it to use the
+# built-in file store.
+services:
+  - type: web
+    name: dropship-os
+    runtime: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: dropship-os-db
+          property: connectionString
+
+databases:
+  - name: dropship-os-db
+    plan: basic-256mb
